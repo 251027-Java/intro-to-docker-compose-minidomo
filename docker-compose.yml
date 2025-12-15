@@ -1,13 +1,18 @@
-version: '3.8'
+version: "3.8"
 services:
   app:
-    # TODO: Configure build context
+    depends_on:
+      - db
+    build:
+      context: .
     ports:
-      - "8080:8080"
-      
+      - 8080:8080
+
   db:
-    image: postgres:13
+    image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
+    ports:
+      - 5432:5432
