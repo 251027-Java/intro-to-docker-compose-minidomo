@@ -2,20 +2,20 @@ version: "3.8"
 services:
   app:
     depends_on:
-      - db
+      - postgres-db
     build:
       context: .
     ports:
-      - 8080:8080
+      - '8080:8080'
     environment:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: password
 
-  db:
+  postgres-db:
     image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
     ports:
-      - 5432:5432
+      - '5432:5432'
